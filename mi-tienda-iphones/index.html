@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reventa de iPhones</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Reventa de iPhones</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <button id="cart-icon" onclick="showCart()">🛒 (<span id="cart-count">0</span>)</button>
+    </header>
+
+    <section id="inicio">
+        <h2>Bienvenidos a nuestra tienda de iPhones</h2>
+        <p>Encuentra los mejores precios para iPhones de alta calidad.</p>
+        <button onclick="scrollToProducts()">Ver Productos</button>
+    </section>
+
+    <section id="productos">
+        <h2>Nuestros iPhones</h2>
+        <div class="product-list">
+            <div class="product" onclick="showProductDetails('iPhone 12', 18000, 'iphone1.jpg', 'Pantalla: 6.1 pulgadas, Cámara: 12 MP, Batería: 2815 mAh')">
+                <img src="iphone1.jpg" alt="iPhone 12">
+                <h3>iPhone 12</h3>
+                <p>Precio: $18,000 MXN</p>
+            </div>
+            <div class="product" onclick="showProductDetails('iPhone 11', 14000, 'iphone2.jpg', 'Pantalla: 6.1 pulgadas, Cámara: 12 MP, Batería: 3110 mAh')">
+                <img src="iphone2.jpg" alt="iPhone 11">
+                <h3>iPhone 11</h3>
+                <p>Precio: $14,000 MXN</p>
+            </div>
+            <!-- Agrega más productos aquí -->
+        </div>
+    </section>
+	
+	<!-- Modal de compra -->
+<div id="purchase-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Completar compra</h2>
+        <p id="product-info"></p>
+        <label for="email">Ingresa tu correo electrónico:</label>
+        <input type="email" id="email" placeholder="Correo electrónico" required>
+        <button onclick="completePurchase()">Finalizar compra</button>
+    </div>
+</div>
+
+
+    <section id="testimonios">
+        <h2>Lo que dicen nuestros clientes</h2>
+        <div class="testimonial">
+            <p>"Excelente servicio y productos de alta calidad. Recomiendo ampliamente."</p>
+            <p>- Juan Pérez</p>
+        </div>
+        <div class="testimonial">
+            <p>"La compra fue rápida y segura. Estoy muy satisfecho con mi iPhone."</p>
+            <p>- María López</p>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <form>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Modal de descripción de producto -->
+    <div id="product-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeProductDetails()">&times;</span>
+            <img id="product-image" alt="Producto">
+            <h3 id="product-name"></h3>
+            <p id="product-price"></p>
+            <p id="product-description"></p>
+            <button onclick="addToCart()">Agregar al Carrito</button>
+            <button onclick="buyNow()">Comprar Ahora</button>
+        </div>
+    </div>
+
+    <!-- Carrito de Compras -->
+    <div id="cart" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCart()">&times;</span>
+            <h2>Carrito de Compras</h2>
+            <ul id="cart-items"></ul>
+            <p id="total-price">Total: $0 MXN</p>
+            <button onclick="checkout()">Pagar con PayPal</button>
+            <button onclick="showPaymentInstructions()">Pagar en Efectivo</button>
+        </div>
+    </div>
+
+    <!-- Instrucciones de Pago en Efectivo -->
+    <div id="payment-instructions" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePaymentInstructions()">&times;</span>
+            <h3>Instrucciones de Pago en Efectivo</h3>
+            <p>Para pagar en efectivo, por favor visita nuestra tienda física o realiza una transferencia bancaria a la siguiente cuenta:</p>
+            <p><strong>Banco:</strong> Banco Ejemplo</p>
+            <p><strong>Cuenta:</strong> 1234567890</p>
+            <p><strong>Nombre del Titular:</strong> Tu Nombre</p>
+            <p><strong>Referencia:</strong> Por favor, incluye tu nombre y el nombre del producto en la referencia.</p>
+            <p>Una vez que hayas realizado el pago, envíanos un correo a <strong>tu-email@ejemplo.com</strong> con el comprobante de pago.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Reventa de iPhones. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
